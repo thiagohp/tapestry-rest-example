@@ -1,0 +1,38 @@
+<html 
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" 
+	xmlns:p="tapestry:parameter"
+	lang="en">
+	<head>
+		<title>Tapestry REST support example</title>
+	</head>
+	<body>
+		<h1>Tapestry REST support example index page</h1>
+		<div t:type="Alerts"/>
+		<p>
+			Remember this page, both template and class, aren't really part of the
+			example, being just an easy way to interact with the REST endpoints
+			without needing any other external tool. The real examples
+			are the UserRest, AppModule and UserComponentEventResultProcessor classes.
+		</p>
+		<p>
+			<a t:type="PageLink" t:page="openapiviewer/Index" href="#">OpenAPI description viewer</a>
+		</p>
+		<p>
+			<a t:type="PageLink" t:page="rest/User" href="#">User REST endpoint base URL</a>
+		</p>
+		<p>
+			<a t:type="PageLink" t:page="rest/User" t:context="literal:example" href="#">GET an user JSON example</a>
+		</p>
+		<h2>
+			Simulating something external to this webapp making a POST to the REST endpoint above
+			to add an user:
+		</h2>
+		<div t:type="BeanEditForm" t:object="newUser" t:exclude="id"/>
+		<h2>User list</h2>
+		<div t:type="Grid" t:source="users" t:row="user" t:add="viewJson">
+			<p:viewJsonCell>
+				<a t:type="PageLink" t:page="rest/User" t:context="user.id">JSON</a>
+			</p:viewJsonCell>
+		</div>
+	</body>
+</html>
