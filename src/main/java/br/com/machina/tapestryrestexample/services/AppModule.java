@@ -2,8 +2,8 @@ package br.com.machina.tapestryrestexample.services;
 
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.commons.MappedConfiguration;
-import org.apache.tapestry5.commons.ObjectLocator;
-import org.apache.tapestry5.commons.services.CoercionTuple;
+import org.apache.tapestry5.commons.OrderedConfiguration;
+import org.apache.tapestry5.http.services.HttpRequestBodyConverter;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.services.ComponentEventResultProcessor;
 
@@ -23,17 +23,10 @@ public class AppModule {
         configuration.add(SymbolConstants.OPENAPI_APPLICATION_VERSION, "0.0.1");
     }
     
-    @SuppressWarnings("rawtypes")
-    public static void contributeTypeCoercer(
-            MappedConfiguration<CoercionTuple.Key, CoercionTuple> configuration,
-            ObjectLocator objectLocator) {
+    public static void contributeHttpRequestBodyConverter(
+            OrderedConfiguration<HttpRequestBodyConverter> configuration) {
         
-        // Injecting UserService directly as a parameter causes a circular dependency,
-        // so we work around that by injecting ObjectLocator.
-        final UserService userService = objectLocator.getService(UserService.class);
-        
-        // Converts from String to User using Jackson Databind
-        CoercionTuple.add(configuration, String.class, User.class, (s) -> userService.toObject(s));
+        configuration.addInstance("User", UserHttpRequestBodyConverter.class);
     }
     
     @SuppressWarnings("rawtypes")

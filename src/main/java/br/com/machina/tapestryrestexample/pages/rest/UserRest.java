@@ -5,7 +5,7 @@ import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.RequestBody;
 import org.apache.tapestry5.annotations.StaticActivationContextValue;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.util.TextStreamResponse;
+import org.apache.tapestry5.services.HttpStatus;
 
 import br.com.machina.tapestryrestexample.entities.User;
 import br.com.machina.tapestryrestexample.services.UserService;
@@ -28,8 +28,7 @@ public class UserRest {
     @OnEvent(EventConstants.HTTP_PUT) 
     Object save(@RequestBody User user) {
         userService.save(user);
-        // TODO: replace this with an appropriate 201 reponse.
-        return new TextStreamResponse("text/plain", "Ok");
+        return HttpStatus.created();
     }
     
     @OnEvent(EventConstants.HTTP_GET)
