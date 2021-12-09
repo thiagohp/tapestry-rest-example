@@ -4,6 +4,7 @@ import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.StreamResponse;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.annotations.OnEvent;
+import org.apache.tapestry5.annotations.RestInfo;
 import org.apache.tapestry5.annotations.StaticActivationContextValue;
 import org.apache.tapestry5.commons.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -25,29 +26,32 @@ public class InfoRest {
 
     // /version
     @OnEvent(EventConstants.HTTP_GET)
+    @RestInfo(produces = "text/plain")
     public StreamResponse getApiVersion(@StaticActivationContextValue("version") String path) {
         return createTextResponse(getApiVersion());
     }
 
     // /title
     @OnEvent(EventConstants.HTTP_GET)
+    @RestInfo(produces = "text/plain")
     public StreamResponse getApiTitle(@StaticActivationContextValue("title") String path) {
         return createTextResponse(getApiTitle());
     }
 
     // /description
     @OnEvent(EventConstants.HTTP_GET)
+    @RestInfo(produces = "text/plain")
     public StreamResponse getApiDescription(@StaticActivationContextValue("description") String path) {
         return createTextResponse(getApiDescription());
     }
     
     // / (root page URL)
+    @RestInfo(produces = "application/json")
     @OnEvent(EventConstants.HTTP_GET)
-    public StreamResponse getFullInfo() {
-        return new TextStreamResponse("application/json", 
-                new JSONObject("version", getApiVersion(), 
-                        "title", getApiTitle(), 
-                        "description", getApiDescription()).toCompactString());
+    public JSONObject getFullInfo() {
+        return new JSONObject("version", getApiVersion(), 
+                "title", getApiTitle(), 
+                "description", getApiDescription());
     }
     
     private String getApiVersion() {
