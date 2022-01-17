@@ -1,5 +1,6 @@
 package br.com.machina.tapestryrestexample.services;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class UserServiceImpl implements UserService {
     
     public UserServiceImpl() {
         objectMapper = new ObjectMapper();
+        objectMapper.setDateFormat(new SimpleDateFormat("yyyy/MM/dd hh:mm:ss"));        
     }
     
     public User save(User user) {
