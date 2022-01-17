@@ -3,7 +3,7 @@ package br.com.machina.tapestryrestexample.services;
 import java.util.List;
 import java.util.Optional;
 
-import br.com.machina.tapestryrestexample.entities.User;
+import br.com.machina.tapestryrestexample.rest.entities.User;
 
 /**
  * Service which provide methods for dealing with {@link User} instances.

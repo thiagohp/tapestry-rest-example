@@ -7,7 +7,7 @@ import org.apache.tapestry5.http.services.HttpRequestBodyConverter;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.services.ComponentEventResultProcessor;
 
-import br.com.machina.tapestryrestexample.entities.User;
+import br.com.machina.tapestryrestexample.rest.entities.User;
 
 public class AppModule {
     
@@ -21,18 +21,6 @@ public class AppModule {
         configuration.add(SymbolConstants.HMAC_PASSPHRASE, "I need some REST!");
         configuration.add(SymbolConstants.OPENAPI_TITLE, "Tapestry REST support example");
         configuration.add(SymbolConstants.OPENAPI_APPLICATION_VERSION, "0.0.1");
-    }
-    
-    public static void contributeHttpRequestBodyConverter(
-            OrderedConfiguration<HttpRequestBodyConverter> configuration) {
-        
-        configuration.addInstance("User", UserHttpRequestBodyConverter.class);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    public void contributeComponentEventResultProcessor(
-            MappedConfiguration<Class, ComponentEventResultProcessor> configuration) {
-        configuration.addInstance(User.class, UserComponentEventResultProcessor.class);
     }
     
 }

@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.tapestry5.jacksondatabind.services.ObjectMapperSource;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.machina.tapestryrestexample.entities.User;
+import br.com.machina.tapestryrestexample.rest.entities.User;
 
 /**
  * Memory-only {@link UserService} implementation.
@@ -18,8 +20,8 @@ public class UserServiceImpl implements UserService {
     
     final private ObjectMapper objectMapper;
     
-    public UserServiceImpl() {
-        objectMapper = new ObjectMapper();
+    public UserServiceImpl(ObjectMapperSource objectMapperSource) {
+        objectMapper = objectMapperSource.get(User.class);
     }
     
     public User save(User user) {
