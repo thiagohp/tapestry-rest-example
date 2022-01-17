@@ -1,5 +1,7 @@
 package br.com.machina.tapestryrestexample.rest.entities;
 
+import java.util.Date;
+
 public class User {
 
     private Long id;
@@ -9,6 +11,8 @@ public class User {
     private String username;
 
     private String email;
+    
+    private Date creationDate = new Date();
 
     /**
      * @return the id
@@ -64,6 +68,20 @@ public class User {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    /**
+     * @return the creationDate
+     */
+    public Date getCreationDate() {
+        return creationDate;
+    }
+    
+    /**
+     * @param creationDate the creationDate to set
+     */
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
 }
