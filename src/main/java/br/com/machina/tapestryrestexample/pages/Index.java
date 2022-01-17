@@ -11,18 +11,16 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
-import br.com.machina.tapestryrestexample.entities.User;
 import br.com.machina.tapestryrestexample.pages.rest.UserRest;
+import br.com.machina.tapestryrestexample.rest.entities.User;
 import br.com.machina.tapestryrestexample.services.AppModule;
-import br.com.machina.tapestryrestexample.services.UserComponentEventResultProcessor;
 import br.com.machina.tapestryrestexample.services.UserService;
 
 /**
  * Remember this page, both template and class, aren't really part of the
  * example, being just an easy way to interact with the REST endpoints
  * without needing any other external tool. 
- * The real examples are the {@link UserRest}, {@link AppModule} and 
- * {@link UserComponentEventResultProcessor} classes.
+ * The real examples are the {@link UserRest} and {@link AppModule} classes.
  */
 public class Index {
     

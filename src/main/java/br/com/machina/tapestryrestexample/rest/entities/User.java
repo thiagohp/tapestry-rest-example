@@ -1,4 +1,4 @@
-package br.com.machina.tapestryrestexample.entities;
+package br.com.machina.tapestryrestexample.rest.entities;
 
 public class User {
 

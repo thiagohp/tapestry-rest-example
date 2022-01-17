@@ -8,7 +8,7 @@ import org.apache.tapestry5.annotations.StaticActivationContextValue;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.HttpStatus;
 
-import br.com.machina.tapestryrestexample.entities.User;
+import br.com.machina.tapestryrestexample.rest.entities.User;
 import br.com.machina.tapestryrestexample.services.UserService;
 
 /**
